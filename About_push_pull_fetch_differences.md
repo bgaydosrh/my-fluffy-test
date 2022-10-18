@@ -9,10 +9,12 @@ When you `push`:
 	3. If verification succeeds, Git sends the changes in your tracking branch to the remote branch. 
 
     To avoid merge conflicts, run `fetch` before running `push`. Running `fetch` before `push` synchronizes your tracking branch with the remote repository. If pushing fails, use `pull` to update and synchronize your tracking branch with the remote repository.
+
 - `pull` - Updates your tracking branch with changes from a remote branch and merges the changes into your local branch. When you `pull`:
- 
+
 	1. Git perform a `fetch` command, which updates your tracking branch with changes from a remote repository.
 	2. Git runs a `merge` command, which merges the changes from the remote repository with the changes in your tracking branch.
+
 - `fetch` - Retrieves changes from a remote repository to your tracking branch. When you `fetch`:
 	1. Git verifies whether your tracking branch exists.
 	2. If verification succeeds, Git looks for changes in the remote branch that do not exist in your tracking branch.
