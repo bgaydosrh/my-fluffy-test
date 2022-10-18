@@ -6,7 +6,7 @@ When you work with Git, it is essential to understand the differences between `p
 When you `push`:
     1. Git verifies whether your tracking branch exists.
     2. Git verifies if a remote repository is connected to your tracking branch. Git does not perform a `fetch` when you `push`.
-	3. If verification succeeds, Git sends the changes in your tracking branch to the remote branch.
+    3. If verification succeeds, Git sends the changes in your tracking branch to the remote branch.
 
     To avoid merge conflicts, run `fetch` before running `push`. Running `fetch` before `push` synchronizes your tracking branch with the remote repository. If pushing fails, use `pull` to update and synchronize your tracking branch with the remote repository.
 - `pull` - Updates your tracking branch with changes from a remote branch and merges the changes into your local branch. When you `pull`:
