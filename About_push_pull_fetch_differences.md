@@ -1,5 +1,24 @@
-What is the difference between push, pull, and fetch?
-git push - sent changes from a local branch to a remote repo
-git fetch - get changes from a remote repo into your tracking branch
-git pull - will get changes from a remote branch into your tracking branch and merge them into a local branch
-Often git push and git pull are described as equivalent. This isn't entirely correct, since under the hood git pull does two things. git push takes our current branch, and checks to see whether or not there is a tracking branch for a remote repository connected to it. If so, our changes are taken from our branch and pushed to the remote branch. This is how code is shared with a remote repository, you can think of it as "make the remote branch resemble my local branch". This will fail if the remote branch has diverged from your local branch: if not all the commits in the remote branch are in your local branch. When this happens, your local branch needs to be synchronized with the remote branch with git pull or git fetch and git merge.git fetch again takes our current branch, and checks to see if there is a tracking branch. If so, it looks for changes in the remote branch, and pulls them into the tracking branch. It does not change your local branch. To do that, you'll need to do git merge origin/master (for the "master" branch) to merge those changes into your branch - probably also called "master".git pull simply does a git fetch followed immediately by git merge. This is often what we desire to do, but some people prefer to use git fetch followed by git merge to make sure they understand the changes they are merging into their branch before the merge happens.
+# About Git `push`, `pull`, and `fetch` commands #
+
+When you work with Git, it is essential to understand the differences between `push`, `pull`, and `fetch`. These terms are often confused because they perform some of the same functions, using different methods.    
+
+- `push` - Sends changes you make on your local branch to a remote repository.
+When you `push`:
+	1. Git verifies whether your tracking branch exists and if a remote repository is connected to it. Git does not perform a `fetch` when you `push`.
+	2. If verification succeeds, the changes in your tracking branch are sent, or *pushed*, to the remote branch.
+
+    To avoid merge conflicts, run `fetch` before running `push`. Running `fetch` before `push` synchronizes the commits on your tracking branch with the commits in the remote repository. If pushing fails, use `pull` to update and synchronize yout tracking branch with the remote repository.
+
+- `pull` - Updates your tracking branch with changes from a remote branch, and then merges the changes into your local branch. When you `pull`:
+ 
+    1. Git perform a `fetch` command, which updates your tracking branch with changes from a remote repository.
+    2. Git runs a `merge` command, which merges the changes from the remote repository with the changes in your tracking branch.
+
+- `fetch` - Only Updates your tracking branch with changes from a remote repository. When you `fetch`:
+    1. Git verifies whether your tracking branch exists.
+    2. If verification succeeds, Git looks for changes in the remote branch.
+    3. If changes are found, Git retrieves them but does not update the tracking branch.
+
+    Once you have verfied the changes Git has made to your tracking branch are expected, run `git merge origin/master` to synchornize your tracking branch and the remote repository.
+   
+       
